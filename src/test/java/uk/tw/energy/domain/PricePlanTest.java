@@ -51,7 +51,7 @@ public class PricePlanTest {
     public void shouldReceiveMultipleExceptionalDateTimes() throws Exception {
         LocalDateTime exceptionalDateTime = LocalDateTime.of(2017, Month.AUGUST, 30, 23, 0, 0);
         PricePlan.PeakTimeMultiplier peakTimeMultiplier =
-                new PricePlan.PeakTimeMultiplier(DayOfWeek.WEDNESDAY, BigDecimal.FIVE);
+                new PricePlan.PeakTimeMultiplier(DayOfWeek.WEDNESDAY, BigDecimal.TEN);
         PricePlan.PeakTimeMultiplier otherPeakTimeMultiplier =
                 new PricePlan.PeakTimeMultiplier(DayOfWeek.TUESDAY, BigDecimal.TEN);
         List<PricePlan.PeakTimeMultiplier> peakTimeMultipliers =
@@ -60,6 +60,6 @@ public class PricePlanTest {
 
         BigDecimal price = pricePlan.getPrice(exceptionalDateTime);
 
-        assertThat(price).isCloseTo(BigDecimal.FIVE, Percentage.withPercentage(1));
+        assertThat(price).isCloseTo(BigDecimal.TEN, Percentage.withPercentage(1));
     }
 }
